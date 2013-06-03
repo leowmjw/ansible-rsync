@@ -49,6 +49,13 @@ An Ansible action plugin using rsync to make synchronizing a file paths in your 
 <td><ul><li>yes</li><li>no</li></ul></td>
 <td>Delete files that don't exist (after transfer, not before) in <code>src</code> path.</td>
 </tr>
+<tr>
+<td>rsync_path</td>
+<td>no</td>
+<td></td>
+<td></td>
+<td>Specify rsync to run on the remote machine. See <code>--rsync-path</code> on the rsync man page.</td>
+</tr>
 </table>
 
 * Synchronization of src on the localhost to dest on the current inventory host
