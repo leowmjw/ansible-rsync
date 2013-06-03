@@ -4,7 +4,7 @@ ansible-rsync
 ## synchronize
 
 
-An Ansible action plugin based `rsync` to make synchronizing a file paths in your playbooks quick and easy. Of course you could just use the command action to call rsync yourself, but you also have to add a fair number of boilerplate options and host facts. You still may need to. The synchronize action is meant to do common things with `rsync` easily. It does not provide access to the full power of rsync. 
+An Ansible action plugin using rsync to make synchronizing a file paths in your playbooks quick and easy. Of course you could just use the command action to call rsync yourself, but you also have to add a fair number of boilerplate options and host facts. You still may need to call rsync directly via `command` or `shell`. The synchronize action is meant to do common things with `rsync` easily. It does not provide access to the full power of rsync. 
 
 <table>
 <tr>
@@ -70,6 +70,8 @@ synchronize: mode=pull src=some/relative/path dest=/some/absolute/path
 
 ```
 synchronize: src=some/relative/path dest=/some/absolute/path
+  delegate_to: delegate.host
+
 ```
 * Synchronize and delete files in dest on inventory host not found in src of localhost.
 
@@ -81,5 +83,8 @@ synchronize: src=some/relative/path dest=/some/absolute/path delete=yes
 ```
 synchronize: src=some/relative/path dest=/some/absolute/path verbosity=1
 ```
+* Synchronize with using an alternate rsync command. See --rsync-path on the rsync man page.
 
-
+```
+synchronize: src=some/relative/path dest=/some/absolute/path rsync_path="sudo rsync"
+```
